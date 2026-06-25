@@ -17,3 +17,4 @@ This repo contains the code to reproduce results from our paper [Multi-label Bio
 
 
 ## Data
+[EU-OPENSCREEN Bioactive Cell Painting dataset](https://zenodo.org/records/14776021)
