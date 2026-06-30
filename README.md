@@ -8,7 +8,7 @@ This repo contains the code to reproduce results from our paper [Multi-label Bio
 
 
 
-## Baseline comparisson
+## Baseline comparisson on FMP Cell Painting dataset
 <p align="center">
   <img src="figures/baseline_prauc_FMP_upd_02.jpg" width="900">
 </p>
