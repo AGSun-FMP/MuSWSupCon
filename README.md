@@ -20,7 +20,7 @@ This repo contains the code to reproduce results from our paper [Multi-label Bio
 ### Images
 [EU-OPENSCREEN Bioactive Cell Painting dataset](https://zenodo.org/records/14776021)
 
-[EU-OPENSCREEN Bioactives images processed with ImageJ](https://huggingface.co/datasets/davidbupw/euopen_cp_bioactives_ImgJ/)
+[EU-OPENSCREEN Bioactives HepG2 microscopy images processed with ImageJ](https://huggingface.co/datasets/davidbupw/euopen_cp_bioactives_ImgJ/)
 
 [BBBC022 images processed with ImageJ](https://zenodo.org/records/10948460)
 
