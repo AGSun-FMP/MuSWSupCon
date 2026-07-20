@@ -35,7 +35,7 @@ np.random.seed(4)
 parser = argparse.ArgumentParser()
 parser.add_argument('--device', type=int, default=0)
 
-parser.add_argument('--emb_file', type=str)#embeddings File path
+parser.add_argument('--emb_file', type=str)#embeddings File path, e.g.: all_emb_supbs560selfsup_bs560EUOS_4CJ_multisupcon_BMT_R50_1-5_pixupd_real_best.csv
 parser.add_argument('--aoi', type=str)#annotation of interest; label source
 parser.add_argument('--kf', type=int)
 
@@ -43,7 +43,7 @@ parser.add_argument('--kf', type=int)
 parser.add_argument('--b22', type=bool, default=False)
 parser.add_argument('--b36', type=bool, default=False)
 parser.add_argument('--dino', type=bool, default=False)
-parser.add_argument('--euos', type=bool, default=False)
+parser.add_argument('--euos', type=bool, default=False)#
 parser.add_argument('--cellprof', type=bool, default=False)
 parser.add_argument('--best_choice', type=str, default="acc")# or precision
 
@@ -89,7 +89,6 @@ if b36:
     if dino:
         emb_file="embeddings/emb_bs192_36_5CJ_DINO_OGnowarpII_final.csv"
 if euos:
-    #mesh_ohe_matrix=pd.read_csv("FMP_CP/mesh_ohe_matrix_euos.csv",index_col=0,delimiter=";")# remove
     mesh_ohe_matrix=pd.read_csv("euos/mesh_ohe_matrix_euos.csv",index_col=0,delimiter=";")
     bmoa_ohe_matrix=pd.read_csv("euos/bmoa_ohe_matrix_euos.csv",index_col=0,delimiter=";")
     btarget_ohe_matrix=pd.read_csv("euos/btarget_ohe_matrix_euos.csv",index_col=0,delimiter=";")
@@ -99,14 +98,9 @@ if euos:
 res_dict={}
 print(emb_file)
 print(aoiX)
-hdd="/puma1/davidb/cp/"
 embis=[emb_file]
 for emb_file in embis:
-    if emb_file=="embeddings/hydra/allemb_supbs40unsup40_bbbc22_5Ctiff_supcon_nolabANDnonans+_neighaug_lr_2-5_full_meshupd+++.csv":
-        delimito=","
-    else:
-        delimito=";"
-    emb_file="/home/davidb/FMP-FILES/FB3/AG Sun/current members/PhD student/davidb/puma/cp/"+emb_file
+    delimito=";"
     if emb_type2:
             test_dfX0=pd.read_csv(emb_file,index_col=0,delimiter=delimito)
     else:
@@ -223,8 +217,6 @@ for emb_file in embis:
             device = torch.device('cuda:'+str(device_id) if torch.cuda.is_available() else 'cpu')
             num_feat=features.shape[0]
             num_classes=label.shape[0]
-            import torch
-            import torch.nn as nn
             class Net(nn.Module):
                 def __init__(self, input_size, hidden_size1, hidden_size2, num_classes, dropout_prob=0.5):
                     super(Net, self).__init__()
@@ -269,9 +261,9 @@ for emb_file in embis:
                 PATHx_save= "models/b22/model_dsnn_myriad{0}_".format(str(i))+aoi+"_"+str(bs)+emb_file.split("/")[-1].split(".csv")[0]
             else:
                 if best_choice=="precision":
-                    PATHx_save=hdd+"models/myriad/model_dsnn_X3myriad{0}_".format(str(i))+aoi+"_"+str(bs)+emb_file.split("emb_")[1]+"_precision"
+                    PATHx_save="models/myriad/model_dsnn_X3myriad{0}_".format(str(i))+aoi+"_"+str(bs)+emb_file.split("emb_")[1]+"_precision"
                 if best_choice=="acc":#Multi-label accuracy:
-                    PATHx_save=hdd+"models/myriad/model_dsnn_X3myriad{0}_".format(str(i))+aoi+"_"+str(bs)+emb_file.split("emb_")[1]
+                    PATHx_save="models/myriad/model_dsnn_X3myriad{0}_".format(str(i))+aoi+"_"+str(bs)+emb_file.split("emb_")[1]
             outfile="embeddings/emb"+PATHx_save.split("/")[-1][5:-4]+".csv"
             logfile="logs/log_"+str(i)+"_"+PATHx_save.split("/")[-1][5:-4]
 
