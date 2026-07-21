@@ -97,6 +97,10 @@ res_dict={}
 print(emb_file)
 print(aoiX)
 embis=[emb_file]
+os.makedirs("precisions", exist_ok=True)
+os.makedirs("logs", exist_ok=True)
+os.makedirs("models", exist_ok=True)
+os.makedirs("embeddings", exist_ok=True)
 for emb_file in embis:
     delimito=";"
     if emb_type2:
@@ -426,13 +430,6 @@ for emb_file in embis:
             tr_mae,timo=[],[]
             ep=100
             debug=False
-            if os.path.exists(logfile):
-                print("Logfile exists already!")
-                model.load_state_dict(torch.load(PATHx_save[:-3]+"_best"+PATHx_save[-3:]))  
-                model.to(device);  
-                print("Recalculate precision anyway")
-                calc_precision(test_loader,pfilename="best_precision"+logfile.split("/")[-1][3:]+".csv")# if precision as best_choce there should be 2x precision in the name
-                break
             with open(logfile,"w+") as g:
                 g.write("")            
             print(logfile)
