@@ -7,7 +7,6 @@ import random
 import re
 import sklearn
 import time
-from rdkit import Chem
 import matplotlib.pyplot as plt
 from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import GroupKFold
@@ -17,7 +16,6 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import os
-import rdkit
 from sklearn.ensemble import RandomForestClassifier
 import os.path as osp
 import sys
@@ -36,8 +34,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--device', type=int, default=0)
 
 parser.add_argument('--emb_file', type=str)#embeddings File path, e.g.: all_emb_supbs560selfsup_bs560EUOS_4CJ_multisupcon_BMT_R50_1-5_pixupd_real_best.csv
-parser.add_argument('--aoi', type=str)#annotation of interest; label source
-parser.add_argument('--kf', type=int)
+parser.add_argument('--aoi', type=str)#annotation of interest; label source ["bmoa_upd","btarget","mesh"]
+parser.add_argument('--kf', type=int) # Cross validation; integer number of the k-fold (0-4)
 
 
 parser.add_argument('--b22', type=bool, default=False)
@@ -118,8 +116,6 @@ for emb_file in embis:
         test_dfX0=test_dfX0_.copy()
         if aoi=="mesh":
             moi=mesh_ohe_matrix.copy()
-        if aoi=="pnd":
-            moi=pnd_ohe_matrix.copy()
         if aoi=="bmoa_upd":
             moi=bmoa_ohe_matrix.copy()
         if aoi=="btarget":
