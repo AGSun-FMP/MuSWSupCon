@@ -1,6 +1,6 @@
 # Multi-label Bioactivity Prediction from Multi-site Cell Painting Data via Semi-Supervised Contrastive Learning and Ensemble Learning
 
-This repo contains the code to reproduce results from our paper [Multi-label Bioactivity Prediction from Multi-site Cell Painting Data via Semi-Supervised Contrastive Learning and Ensemble Learning](xxx). In this work, we demonstrate the application of MuSWSemiSupCon models for extracting meaningful features from Cell Painting image data, to facilitate accurate bioactivity prediction. MuSWSupCon extends our previously published [SemiSupCon](https://pubs.acs.org/doi/10.1021/acs.jcim.4c00835) framework. The implementation of SemiSupCon is publicly available on GitHub at [https://github.com/AGSun-FMP/CP_SemiSupCon].
+This repo contains the code to reproduce results from our paper [Multi-label Bioactivity Prediction from Multi-site Cell Painting Data via Semi-Supervised Contrastive Learning and Ensemble Learning](xxx). In this work, we demonstrate the application of multi-label semi-weakly supervised contrastive learning (MuSWSupCon) models for extracting meaningful features from Cell Painting image data, to facilitate accurate bioactivity prediction. MuSWSupCon extends our previously published [SemiSupCon](https://pubs.acs.org/doi/10.1021/acs.jcim.4c00835) framework. The implementation of SemiSupCon is publicly available on GitHub at [https://github.com/AGSun-FMP/CP_SemiSupCon].
 
 <p align="center">
   <img src="figures/Overview.svg" width="900">
